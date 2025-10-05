@@ -1,0 +1,11 @@
+name: Scheduled Demo
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # runs every 1 minutes
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print time
+        run: echo "Current $(date -u)"

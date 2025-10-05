@@ -1,11 +1,13 @@
-name: Scheduled Demo
+name: My First Action
 
 on:
-  schedule:
-    - cron: '*/1 * * * *'  # runs every 1 minutes
+  push:        # Runs every time you push a commit
+    branches:
+      - main
+
 jobs:
-  ping:
+  hello-world:
     runs-on: ubuntu-latest
     steps:
-      - name: Print time
-        run: echo "Current $(date -u)"
+      - name: Print a message
+        run: echo "🎉 Hello from GitHub Actions!"
