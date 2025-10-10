@@ -1,15 +1,29 @@
-name: Scheduled Demo
-
+name: Weekly Newsletter
 on:
-  workflow_dispatch:       # allows manual run
   schedule:
+    # - cron: '0 9 * * MON'  # every Monday 9 AM UTC
     - cron: '*/1 * * * *'  # every 1 minute (may delay a bit)
-
 jobs:
-  ping:
+  call-function:
     runs-on: ubuntu-latest
     steps:
-      - name: Print UTC time
-        run: |
-          echo "Current UTC time:"
-          date -u
+      - name: Call Edge Function
+        run: curl -X POST https://ebkhlcdklhcqchpbyxgw.supabase.co/functions/v1/weekly-newsletter
+
+
+
+# name: Scheduled Demo
+
+# on:
+#   workflow_dispatch:       # allows manual run
+#   schedule:
+#     - cron: '*/1 * * * *'  # every 1 minute (may delay a bit)
+
+# jobs:
+#   ping:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print UTC time
+#         run: |
+#           echo "Current UTC time:"
+#           date -u
